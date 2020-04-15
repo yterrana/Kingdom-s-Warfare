@@ -1,48 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home page{% endblock %}
-
 {% block body %}
-
-<div class="container">
-    <div class="col-md-12">
-        <div class="col-md-4">
-        <h1>Test de combat - {{ dump(isDead) }}</h1>
-        <h4>{{ pseudo.nom }} ({{ pseudo.pv }})</h4>
-            <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: {{ pseudo.pv }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ pseudo.pv }} %</div>
+{#    <audio autoplay src="{{ asset('sons/gladiator-soundtrack-victory-theme.mp3') }}">wtf</audio>#}
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-12 align-self-end">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <h1 class="text-white font-weight-bold">Bienvenue, {{ app.user.username }}!</h1>
+                    {% else %}
+                        <img src="{{ asset('img/bg.png') }}" alt="logo-home-page">
+                    {% endif %}
+                    <hr class="divider my-4" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <button class="btn btn-primary btn-xl home-main-btn">
+                            <a class="home-police" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                        </button>
+                    {% else %}
+                        <button class="btn btn-primary btn-xl home-main-btn">
+                            <a class="js-scroll-trigger home-police" href="#about">Connexion</a>
+                            <span class="btn-divider-login">|</span>
+                            <a class="js-scroll-trigger home-police" href="#about">S'inscrire</a>
+                        </button>
+                    {% endif %}
+                </div>
             </div>
         </div>
-        <br>
-
-        <form action="{{ path('attaque') }}" method="post">
-            <p>
-                <button class="btn btn-outline-primary" type="submit">Attaquer</button>
-            </p>
-        </form>
-
-        <div class="col-md-4">
-            <h4>{{ ennemi.nom }} ({{ ennemi.pv }})</h4>
-            {% if isDead == false %}
-            <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: {{ ennemi.pv }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ ennemi.pv }} %</div>
+    </header>
+    <!-- About section-->
+    <section class="page-section bg-dark" id="about">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 text-center">
+                    <h1 class="text-white mt-0 home-police" id="login-text-color">Connexion</h1>
+                    <hr class="divider divider-yellow light my-4" />
+                    <p>
+                        {{ render(controller('FOS\\UserBundle\\Controller\\SecurityController::loginAction')) }}
+                    </p>
+                </div>
             </div>
-            {% else %}
-                <p>Vous avez tuez votre ennemi !</p>
-            {% endif %}
         </div>
-        <br>
-        <br>
-        <br>
+    </section>
+    <!-- Services section-->
+    <section class="page-section" id="services">
+        <div class="container">
+            <h1 class="text-center mt-0 home-police">Inscription</h1>
+            <hr class="divider my-4" />
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <p>
+{#                        {{ render(controller('FOS\\UserBundle\\Controller\\RegistrationController::registerAction')) }}#}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio section-->
+    <section id="portfolio">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
 
+            </div>
+        </div>
+    </section>
 
-        <h3>Historique</h3>
-        <ul>
-            {% if blabla is defined %}
-            <li>{{ blabla }}</li>
-            {% endif %}
-        </ul>
-    </div>
-
-</div>
 {% endblock %}

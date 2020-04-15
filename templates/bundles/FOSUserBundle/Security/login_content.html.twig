@@ -1,0 +1,39 @@
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<!-- Login Area Start -->
+<section class="jobguru-login-area section_70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-box">
+
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+                        <div class="single-login-field">
+                            <input class="form-control" type="text" id="username" name="_username" placeholder="Pseudo" value="{{ last_username }}" required="required" autocomplete="username" />
+                        </div>
+
+                        <br>
+
+                        <div class="single-login-field">
+                            <input class="form-control" type="password" id="password" name="_password" placeholder="Mot de passe" required="required" autocomplete="current-password" />
+                        </div>
+
+                        <br>
+
+                        <div class="single-login-field">
+                            <button type="submit" class="btn btn-light btn-xl js-scroll-trigger login-btn-police">Valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login Area End -->
+
+

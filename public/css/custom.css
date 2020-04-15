@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Seagram tfb';
+  src: url('font/Seagram tfb.ttf') format('truetype');
+}
+
+.home-main-btn {
+  font-family: 'Seagram tfb', "Comic Sans MS";
+  font-size: 1.5em;
+}
+
+.home-main-btn, .home-main-btn a {
+  color: black;
+}
+
+.home-main-btn a:hover {
+  color: #ffcc00;
+}
+
+.btn-divider-login {
+  color: black;
+}
+
+.home-main-btn:active {
+  color: dodgerblue;
+}
+
+.home-police {
+  font-family: 'Seagram tfb', "Comic Sans MS";
+}
+
+.login-btn-police {
+  font-family: 'Seagram tfb', "Comic Sans MS";
+  font-size: 1.5em;
+  padding: 0.25rem 2.25rem;
+  min-height: 48px;
+}
+
+.login-btn-police:hover {
+  background-color: black;
+  color: #ffcc00;
+  border: 2px solid #ffcc00;
+}
+
+#login-text-color {
+  color: #ffcc00!important;
+}
+
+.divider-yellow {
+  border-color: #ffcc00!important;
+}
+
+input[type="text"]{
+  text-align: center;
+}
+
+input[type="password"]{
+  text-align: center;
+}

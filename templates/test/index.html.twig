@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-4">
+        <h1>Test de combat - {{ dump(isDead) }}</h1>
+        <h4>{{ pseudo.nom }} ({{ pseudo.pv }})</h4>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ pseudo.pv }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ pseudo.pv }} %</div>
+            </div>
+        </div>
+        <br>
+
+        <form action="{{ path('attaque') }}" method="post">
+            <p>
+                <button class="btn btn-outline-primary" type="submit">Attaquer</button>
+            </p>
+        </form>
+
+        <div class="col-md-4">
+            <h4>{{ ennemi.nom }} ({{ ennemi.pv }})</h4>
+            {% if isDead == false %}
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ ennemi.pv }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ ennemi.pv }} %</div>
+            </div>
+            {% else %}
+                <p>Vous avez tuez votre ennemi !</p>
+            {% endif %}
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+        <h3>Historique</h3>
+        <ul>
+            {% if blabla is defined %}
+            <li>{{ blabla }}</li>
+            {% endif %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}
